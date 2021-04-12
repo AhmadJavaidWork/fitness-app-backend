@@ -5,7 +5,7 @@ import { password, master, token } from '../../services/passport';
 const router = new Router();
 
 /**
- * @api {post} /auth/sign-in Authenticate
+ * @api {post} /auth/sign-in Sign in
  * @apiName Authenticate
  * @apiGroup Auth
  * @apiPermission master
@@ -18,7 +18,7 @@ const router = new Router();
 router.post('/sign-in', master(), password(), signIn);
 
 /**
- * @api {get} /auth/sign-out Authenticate
+ * @api {get} /auth/sign-out Sign out
  * @apiName Sign Out
  * @apiGroup Auth
  * @apiPermission user

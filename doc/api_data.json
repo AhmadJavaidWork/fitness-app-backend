@@ -2,7 +2,7 @@
   {
     "type": "post",
     "url": "/auth/sign-in",
-    "title": "Authenticate",
+    "title": "Sign in",
     "name": "Authenticate",
     "group": "Auth",
     "permission": [
@@ -63,7 +63,7 @@
   {
     "type": "get",
     "url": "/auth/sign-out",
-    "title": "Authenticate",
+    "title": "Sign out",
     "name": "Sign_Out",
     "group": "Auth",
     "permission": [
