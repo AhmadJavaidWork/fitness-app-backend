@@ -1,9 +1,4 @@
 import { Router } from 'express';
-import {
-  password as passwordAuth,
-  master,
-  token,
-} from '../../services/passport';
 import { getAll, get } from './controller';
 
 const router = new Router();
@@ -13,7 +8,7 @@ const router = new Router();
  * @apiName RetrieveAllExercises
  * @apiGroup Exercise
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiHeader {String} Authorization Bearer Token.
  * @apiSuccess {Object} All Exercise.
  */
 
@@ -24,7 +19,7 @@ router.get('/', getAll);
  * @apiName RetrieveSingleExercise
  * @apiGroup Exercise
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiHeader {String} Authorization Bearer Token.
  * @apiSuccess {Object} Exercise's data.
  */
 

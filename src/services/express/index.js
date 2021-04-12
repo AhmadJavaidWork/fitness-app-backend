@@ -4,17 +4,13 @@ import cors from 'cors';
 import compression from 'compression';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import { errorHandler as queryErrorHandler } from 'querymen';
-import { errorHandler as bodyErrorHandler } from 'bodymen';
 import { env } from '../../config';
 import passport from 'passport';
-import knex from '../knex';
 
 export default (apiRoot, routes) => {
   const app = express();
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use('db', knex);
 
   if (env === 'production') {
     app.set('forceSSLOptions', {
@@ -42,8 +38,6 @@ export default (apiRoot, routes) => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(apiRoot, routes);
-  app.use(queryErrorHandler());
-  app.use(bodyErrorHandler());
 
   return app;
 };

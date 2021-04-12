@@ -1,6 +1,6 @@
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { jwtSecret } from '../../config';
-import knex from '../knex';
+import { User } from '../../../models';
 
 export const tokenStrategy = new JwtStrategy(
   {
@@ -12,10 +12,9 @@ export const tokenStrategy = new JwtStrategy(
     ]),
   },
   ({ user }, done) => {
-    knex('users')
-      .where({ id: user.id })
+    User.findByPk(user.id)
       .then((user) => {
-        done(null, user[0]);
+        done(null, user);
         return null;
       })
       .catch(done);

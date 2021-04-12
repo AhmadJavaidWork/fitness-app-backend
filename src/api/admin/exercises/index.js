@@ -8,13 +8,11 @@ const router = new Router();
  * @apiName CreateExercise
  * @apiGroup Exercise
  * @apiPermission admin
- * @apiParam {String} access_token (admin access_token).
+ * @apiHeader {String} Authorization Bearer Token.
  * @apiParam {String} name (exercise name).
  * @apiParam {Number} sets (number of sets).
  * @apiParam {Number} counts (counts per set).
- * @apiSuccess (Sucess 201) {Object} Exercise's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Admin access only.
+ * @apiSuccess (Sucess 200) {Object} Exercise's data.
  */
 
 router.post('/', create);
@@ -24,14 +22,12 @@ router.post('/', create);
  * @apiName UpdateExercise
  * @apiGroup Exercise
  * @apiPermission admin
- * @apiParam {String} access_token (admin access_token).
+ * @apiHeader {String} Authorization Bearer Token.
  * @apiParam {Number} id (exercise id).
  * @apiParam {String} name (exercise name).
  * @apiParam {Number} sets (number of sets).
  * @apiParam {Number} counts (counts per set).
- * @apiSuccess (Sucess 201) {Object} Exercise's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Admin access only.
+ * @apiSuccess (Sucess 200) {Object} Exercise's data.
  */
 
 router.put('/:id', update);
@@ -41,10 +37,9 @@ router.put('/:id', update);
  * @apiName DeleteExercise
  * @apiGroup Exercise
  * @apiPermission admin
- * @apiParam {String} access_token (admin access_token).
+ * @apiHeader {String} Authorization Bearer Token.
  * @apiParam {Number} id (exercise id).
  * @apiSuccess (Sucess 200) Deleted.
- * @apiError 401 Admin access only.
  */
 router.delete('/:id', destroy);
 

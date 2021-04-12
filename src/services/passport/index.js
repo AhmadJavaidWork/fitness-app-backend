@@ -1,11 +1,11 @@
 import passport from 'passport';
-import knex from '../knex';
+import { User } from '../../../models';
 import { passwordStrategy } from './password';
 import { masterStrategy } from './master';
 import { tokenStrategy } from './token';
 
-const User = {};
-User.roles = ['admin', 'user'];
+const user = {};
+user.roles = ['admin', 'user'];
 
 export const password = () => (req, res, next) =>
   passport.authenticate('password', { session: false }, (err, user, info) => {
@@ -25,7 +25,7 @@ export const password = () => (req, res, next) =>
 
 export const master = () => passport.authenticate('master', { session: false });
 
-export const token = ({ required, roles = User.roles } = {}) => (
+export const token = ({ required, roles = user.roles } = {}) => (
   req,
   res,
   next
@@ -53,8 +53,6 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const user = await knex('users')
-    .where({ id })
-    .then((user) => user[0]);
+  const user = await User.findAll({ where: { id } });
   done(null, user);
 });

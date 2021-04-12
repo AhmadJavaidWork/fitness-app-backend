@@ -1,6 +1,108 @@
 [
   {
     "type": "post",
+    "url": "/auth/sign-in",
+    "title": "Authenticate",
+    "name": "Authenticate",
+    "group": "Auth",
+    "permission": [
+      {
+        "name": "master"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic authorization with email and password.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>Master access_token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 201": [
+          {
+            "group": "Success 201",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>User <code>access_token</code> to be passed to other requests.</p>"
+          },
+          {
+            "group": "Success 201",
+            "type": "Object",
+            "optional": false,
+            "field": "user",
+            "description": "<p>Current user's data.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/auth/index.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "get",
+    "url": "/auth/sign-out",
+    "title": "Authenticate",
+    "name": "Sign_Out",
+    "group": "Auth",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Sucess 200": [
+          {
+            "group": "Sucess 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status:",
+            "description": "<ol start=\"200\"> <li></li> </ol>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/auth/index.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
     "url": "/admin/exercises",
     "title": "Create exercise",
     "name": "CreateExercise",
@@ -10,16 +112,22 @@
         "name": "admin"
       }
     ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>(admin access_token).</p>"
-          },
           {
             "group": "Parameter",
             "type": "String",
@@ -46,32 +154,13 @@
     },
     "success": {
       "fields": {
-        "Sucess 201": [
+        "Sucess 200": [
           {
-            "group": "Sucess 201",
+            "group": "Sucess 200",
             "type": "Object",
             "optional": false,
             "field": "Exercise",
             "description": "<p>'s data.</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "type": "Object",
-            "optional": false,
-            "field": "400",
-            "description": "<p>Some parameters may contain invalid values.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>Admin access only.</p>"
           }
         ]
       }
@@ -91,16 +180,22 @@
         "name": "admin"
       }
     ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>(admin access_token).</p>"
-          },
           {
             "group": "Parameter",
             "type": "Number",
@@ -123,18 +218,6 @@
         ]
       }
     },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>Admin access only.</p>"
-          }
-        ]
-      }
-    },
     "version": "0.0.0",
     "filename": "src/api/admin/exercises/index.js",
     "groupTitle": "Exercise"
@@ -150,15 +233,15 @@
         "name": "user"
       }
     ],
-    "parameter": {
+    "header": {
       "fields": {
-        "Parameter": [
+        "Header": [
           {
-            "group": "Parameter",
+            "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "access_token",
-            "description": "<p>User access_token.</p>"
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
           }
         ]
       }
@@ -191,15 +274,15 @@
         "name": "user"
       }
     ],
-    "parameter": {
+    "header": {
       "fields": {
-        "Parameter": [
+        "Header": [
           {
-            "group": "Parameter",
+            "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "access_token",
-            "description": "<p>User access_token.</p>"
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
           }
         ]
       }
@@ -232,16 +315,22 @@
         "name": "admin"
       }
     ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "access_token",
-            "description": "<p>(admin access_token).</p>"
-          },
           {
             "group": "Parameter",
             "type": "Number",
@@ -275,9 +364,9 @@
     },
     "success": {
       "fields": {
-        "Sucess 201": [
+        "Sucess 200": [
           {
-            "group": "Sucess 201",
+            "group": "Sucess 200",
             "type": "Object",
             "optional": false,
             "field": "Exercise",
@@ -286,28 +375,58 @@
         ]
       }
     },
-    "error": {
+    "version": "0.0.0",
+    "filename": "src/api/admin/exercises/index.js",
+    "groupTitle": "Exercise"
+  },
+  {
+    "type": "post",
+    "url": "/users/change-password",
+    "title": "Change password",
+    "name": "ChangePassword",
+    "group": "User",
+    "header": {
       "fields": {
-        "Error 4xx": [
+        "Header": [
           {
-            "group": "Error 4xx",
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic authorization with email and password.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>User's new password.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Sucess 201": [
+          {
+            "group": "Sucess 201",
             "type": "Object",
             "optional": false,
-            "field": "400",
-            "description": "<p>Some parameters may contain invalid values.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "401",
-            "description": "<p>Admin access only.</p>"
+            "field": "status:",
+            "description": "<ol start=\"200\"> <li></li> </ol>"
           }
         ]
       }
     },
     "version": "0.0.0",
-    "filename": "src/api/admin/exercises/index.js",
-    "groupTitle": "Exercise"
+    "filename": "src/api/users/index.js",
+    "groupTitle": "User"
   },
   {
     "type": "post",
@@ -368,7 +487,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "src/api/users.js/index.js",
+    "filename": "src/api/users/index.js",
     "groupTitle": "User"
   },
   {
@@ -382,15 +501,15 @@
         "name": "user"
       }
     ],
-    "parameter": {
+    "header": {
       "fields": {
-        "Parameter": [
+        "Header": [
           {
-            "group": "Parameter",
+            "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "access_token",
-            "description": "<p>User access_token.</p>"
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
           }
         ]
       }
@@ -409,7 +528,68 @@
       }
     },
     "version": "0.0.0",
-    "filename": "src/api/users.js/index.js",
+    "filename": "src/api/users/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "put",
+    "url": "/users/:id",
+    "title": "Update user",
+    "name": "UpdateUser",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer Token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User's email.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>User's name.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Sucess 200": [
+          {
+            "group": "Sucess 200",
+            "type": "Object",
+            "optional": false,
+            "field": "status:",
+            "description": "<ol start=\"200\"> <li></li> </ol>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/users/index.js",
     "groupTitle": "User"
   }
 ]
