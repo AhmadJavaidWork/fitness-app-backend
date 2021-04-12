@@ -4,38 +4,30 @@ import {
   master,
   token,
 } from '../../services/passport';
-import { showMe, register, update, updatePassword } from './controller';
+import { getAll, get } from './controller';
 
 const router = new Router();
 
 /**
- * @api {get} /users/me Retrieve current user
- * @apiName RetrieveCurrentUser
- * @apiGroup User
+ * @api {get} /exercises Retrieve all exercises
+ * @apiName RetrieveAllExercises
+ * @apiGroup Exercise
  * @apiPermission user
  * @apiParam {String} access_token User access_token.
- * @apiSuccess {Object} user User's data.
+ * @apiSuccess {Object} All Exercise.
  */
 
-router.get('/me', token({ required: true }), showMe);
+router.get('/', getAll);
 
 /**
- * @api {post} /users/register Create user
- * @apiName CreateUser
- * @apiGroup User
- * @apiPermission master
- * @apiParam {String} access_token Master access_token.
- * @apiParam {String} email User's email.
- * @apiParam {String{6..}} password User's password.
- * @apiParam {String} [name] User's name.
- * @apiSuccess (Sucess 201) {Object} user User's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Master access only.
- * @apiError 409 Email already registered.
+ * @api {get} /exercises/:id Retrieve single exercise
+ * @apiName RetrieveSingleExercise
+ * @apiGroup Exercise
+ * @apiPermission user
+ * @apiParam {String} access_token User access_token.
+ * @apiSuccess {Object} Exercise's data.
  */
 
-router.post('/register', master(), register);
-router.put('/:id', token({ required: true }), update);
-router.put('/:id/password', passwordAuth(), updatePassword);
+router.get('/:id', get);
 
 export default router;

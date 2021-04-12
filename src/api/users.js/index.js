@@ -20,18 +20,15 @@ const router = new Router();
 router.get('/me', token({ required: true }), showMe);
 
 /**
- * @api {post} /users/register Create user
- * @apiName CreateUser
+ * @api {post} /users/register Register user
+ * @apiName RegisterUser
  * @apiGroup User
  * @apiPermission master
  * @apiParam {String} access_token Master access_token.
  * @apiParam {String} email User's email.
- * @apiParam {String{6..}} password User's password.
+ * @apiParam {String} password User's password.
  * @apiParam {String} [name] User's name.
  * @apiSuccess (Sucess 201) {Object} user User's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Master access only.
- * @apiError 409 Email already registered.
  */
 
 router.post('/register', master(), register);
