@@ -1,7 +1,11 @@
 import { genSalt, hash } from 'bcrypt';
 
-export const genHash = async (password) => {
+const genHash = async (password) => {
   const salt = await genSalt(10);
-  password = await hash(password, salt);
-  return password;
+  const passwordHash = await hash(password, salt);
+  return passwordHash;
+};
+
+export default {
+  genHash,
 };

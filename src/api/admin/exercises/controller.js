@@ -7,30 +7,30 @@ export const create = async (req, res) => {
     const exerciseInfo = await queries.create(exercise);
     return res.json({ exercise: exerciseView(exerciseInfo) });
   } catch (error) {
-    console.log('\n\nERROR ========>', error, '\n\n');
-    return res.json({ error });
+    res.json({ error });
+    throw new Error('\n\nERROR ========>', error, '\n\n');
   }
 };
 
 export const update = async ({ params, body }, res) => {
   try {
-    const id = params.id;
+    const { id } = params;
     const exercise = body;
     const updatedExercise = await queries.update(id, exercise);
     return res.json({ exercise: exerciseView(updatedExercise) });
   } catch (error) {
-    console.log('\n\nERROR ========>', error, '\n\n');
-    return res.json({ error });
+    res.json({ error });
+    throw new Error('\n\nERROR ========>', error, '\n\n');
   }
 };
 
 export const destroy = async ({ params }, res) => {
   try {
-    const id = params.id;
+    const { id } = params;
     await queries.destroy(id);
     return res.json({ status: 200 });
   } catch (error) {
-    console.log('\n\nERROR ========>', error, '\n\n');
-    return res.json({ error });
+    res.json({ error });
+    throw new Error('\n\nERROR ========>', error, '\n\n');
   }
 };

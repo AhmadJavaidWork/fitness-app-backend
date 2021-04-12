@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/named */
 import { Strategy as BearerStrategy } from 'passport-http-bearer';
 import { masterKey } from '../../config';
 

@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/named */
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { jwtSecret } from '../../config';
 import { User } from '../../../models';
@@ -13,10 +15,10 @@ export const tokenStrategy = new JwtStrategy(
   },
   ({ user }, done) => {
     User.findByPk(user.id)
-      .then((user) => {
-        done(null, user);
+      .then((dbUser) => {
+        done(null, dbUser);
         return null;
       })
       .catch(done);
-  }
+  },
 );

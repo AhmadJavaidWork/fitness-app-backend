@@ -13,7 +13,6 @@ const update = async (id, exercise) => {
 
 const destroy = async (id) => {
   await Exercise.destroy({ where: { id } });
-  return;
 };
 
 export default {

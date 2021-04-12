@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { BasicStrategy } from 'passport-http';
 import bcrypt from 'bcrypt';
 import { User } from '../../../models';
@@ -9,9 +10,8 @@ export const passwordStrategy = new BasicStrategy(
       done(true);
       return null;
     }
-    console.log(user);
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) return done(null, user);
     return done(null, false);
-  }
+  },
 );

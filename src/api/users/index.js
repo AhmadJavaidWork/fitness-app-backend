@@ -4,7 +4,9 @@ import {
   master,
   token,
 } from '../../services/passport';
-import { showMe, register, update, changePassword } from './controller';
+import {
+  showMe, register, update, changePassword,
+} from './controller';
 
 const router = new Router();
 

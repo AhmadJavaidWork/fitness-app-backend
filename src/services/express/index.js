@@ -1,11 +1,12 @@
+/* eslint-disable import/named */
 import express from 'express';
 import forceSSL from 'express-force-ssl';
 import cors from 'cors';
 import compression from 'compression';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import { env } from '../../config';
 import passport from 'passport';
+import { env } from '../../config';
 
 export default (apiRoot, routes) => {
   const app = express();
@@ -20,7 +21,6 @@ export default (apiRoot, routes) => {
     app.use(forceSSL);
   }
 
-  /* istanbul ignore next */
   if (env === 'production' || env === 'development') {
     app.use(compression());
     app.use(morgan('dev'));
@@ -30,7 +30,7 @@ export default (apiRoot, routes) => {
       cors({
         credentials: true,
         origin: 'https://eatos.herokuapp.com',
-      })
+      }),
     );
   } else {
     app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
