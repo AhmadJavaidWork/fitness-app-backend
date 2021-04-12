@@ -71,13 +71,66 @@
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Master access only.</p>"
+            "description": "<p>Admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/admin/exercises/index.js",
+    "groupTitle": "Exercise"
+  },
+  {
+    "type": "delete",
+    "url": "/admin/exercises/:id",
+    "title": "Delete exercise",
+    "name": "DeleteExercise",
+    "group": "Exercise",
+    "permission": [
+      {
+        "name": "admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>(admin access_token).</p>"
           },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>(exercise id).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Sucess 200": [
+          {
+            "group": "Sucess 200",
+            "optional": false,
+            "field": "Deleted.",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "409",
-            "description": "<p>Email already registered.</p>"
+            "field": "401",
+            "description": "<p>Admin access only.</p>"
           }
         ]
       }
@@ -165,13 +218,7 @@
             "group": "Error 4xx",
             "optional": false,
             "field": "401",
-            "description": "<p>Master access only.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "409",
-            "description": "<p>Email already registered.</p>"
+            "description": "<p>Admin access only.</p>"
           }
         ]
       }

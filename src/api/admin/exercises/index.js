@@ -14,8 +14,7 @@ const router = new Router();
  * @apiParam {Number} counts (counts per set).
  * @apiSuccess (Sucess 201) {Object} Exercise's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Master access only.
- * @apiError 409 Email already registered.
+ * @apiError 401 Admin access only.
  */
 
 router.post('/', create);
@@ -32,12 +31,21 @@ router.post('/', create);
  * @apiParam {Number} counts (counts per set).
  * @apiSuccess (Sucess 201) {Object} Exercise's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 401 Master access only.
- * @apiError 409 Email already registered.
+ * @apiError 401 Admin access only.
  */
 
 router.put('/:id', update);
 
+/**
+ * @api {delete} /admin/exercises/:id Delete exercise
+ * @apiName DeleteExercise
+ * @apiGroup Exercise
+ * @apiPermission admin
+ * @apiParam {String} access_token (admin access_token).
+ * @apiParam {Number} id (exercise id).
+ * @apiSuccess (Sucess 200) Deleted.
+ * @apiError 401 Admin access only.
+ */
 router.delete('/:id', destroy);
 
 export default router;
