@@ -5,6 +5,12 @@ const getAll = async () => {
   return exercises;
 };
 
+const get = async (id) => {
+  const exercise = await Exercise.findByPk(id);
+  return exercise;
+};
+
 export default {
   getAll,
+  get,
 };
