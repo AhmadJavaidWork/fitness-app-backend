@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable import/named */
 import express from 'express';
 import forceSSL from 'express-force-ssl';
@@ -30,10 +31,10 @@ export default (apiRoot, routes) => {
       cors({
         credentials: true,
         origin: 'https://eatos.herokuapp.com',
-      }),
+      })
     );
   } else {
-    app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
+    app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
   }
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());

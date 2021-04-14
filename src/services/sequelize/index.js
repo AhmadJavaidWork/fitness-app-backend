@@ -1,7 +1,5 @@
 import { Sequelize } from 'sequelize';
 
-const connection = new Sequelize(
-  'postgres://rv:asd@localhost:5432/fitness_app_dev',
-);
+const connection = new Sequelize(process.env.DATABASE_URI);
 
 module.exports = connection;
