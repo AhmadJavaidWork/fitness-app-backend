@@ -30,7 +30,7 @@ export default (apiRoot, routes) => {
     app.use(
       cors({
         credentials: true,
-        origin: 'https://eatos.herokuapp.com',
+        origin: 'https://fitnesssapp.herokuapp.com',
       })
     );
   } else {
